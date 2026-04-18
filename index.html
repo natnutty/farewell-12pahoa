@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ko Nathan's Last Advice</title>
+  <link rel="icon" type="image/x-icon" href="myphoto.jpeg">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<audio id="bg-music" src="bgsound.mp3" loop autoplay></audio>
+<body>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Floating decorative hearts -->
+  <div class="floating-hearts" id="hearts-container"></div>
+
+  <!-- ── HOME PAGE ── -->
+  <div id="home-page">
+
+    <!-- LOGO / HEADER -->
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-icon">✦</div>
+        <span class="logo-text">Ko Nathan's Last Advice</span>
+      </div>
+    </header>
+
+    <!-- IMAGE CAROUSEL -->
+    <div class="carousel-wrap">
+      <div class="carousel" id="carousel">
+        <!-- ✏️ Replace photo1.jpg–photo5.jpg with your actual image filenames -->
+        <div class="carousel-slide active">
+          <img src="photo1.jpeg" alt="Photo 1"
+               onerror="this.style.display='none';this.parentElement.querySelector('.slide-fallback').style.display='flex'" />
+          <div class="slide-fallback">📷 photo1.jpg</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="photo2.jpeg" alt="Photo 2"
+               onerror="this.style.display='none';this.parentElement.querySelector('.slide-fallback').style.display='flex'" />
+          <div class="slide-fallback">📷 photo2.jpg</div>
+        </div>
+        <div class="carousel-slide contain">
+          <img src="photo3.jpeg" alt="Photo 3"
+               onerror="this.style.display='none';this.parentElement.querySelector('.slide-fallback').style.display='flex'" />
+          <div class="slide-fallback">📷 photo3.jpg</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="photo4.jpeg" alt="Photo 4"
+               onerror="this.style.display='none';this.parentElement.querySelector('.slide-fallback').style.display='flex'" />
+          <div class="slide-fallback">📷 photo4.jpg</div>
+        </div>
+        <div class="carousel-slide contain">
+          <img src="photo5.jpeg" alt="Photo 5"
+               onerror="this.style.display='none';this.parentElement.querySelector('.slide-fallback').style.display='flex'" />
+          <div class="slide-fallback">📷 photo5.jpg</div>
+        </div>
+      </div>
+
+      <!-- Arrows -->
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8249;</button>
+      <button class="carousel-btn next" onclick="moveCarousel(1)">&#8250;</button>
+
+      <!-- Dots -->
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+
+    <!-- HOME CARD -->
+    <div class="home-card">
+
+      <div class="teacher-photo-wrap">
+        <img src="myphoto.jpeg" alt="Ko Nathan" class="teacher-photo"
+             onerror="this.style.display='none'; document.getElementById('teacher-photo-fallback').style.display='flex';" />
+        <div class="teacher-photo-fallback" id="teacher-photo-fallback">📷</div>
+      </div>
+
+      <h1>Congratulations, Class!</h1>
+      <p class="subtitle">
+        It has been an incredible journey with all of you.<br>
+        Select your name below to receive a special message.
+      </p>
+
+      <hr class="divider"/>
+
+      <label for="student-select">Who are you?</label>
+      <select id="student-select">
+        <option value="">— Select your name —</option>
+        <!-- ✏️ ADD YOUR STUDENTS HERE -->
+        <option value="abigail">Abigail</option>
+        <option value="angel">Angel</option>
+        <option value="aurel">Aurel</option>
+        <option value="avel">Avel</option>
+        <option value="bryan">Bryan</option>
+        <option value="canda">Canda</option>
+        <option value="carolyne">Carolyne</option>
+        <option value="catherine">Catherine</option>
+        <option value="chessa">Chessa</option>
+        <option value="chloe">Chloe</option>
+        <option value="clara">Clara</option>
+        <option value="darrel">Darrel</option>
+        <option value="denzel">Denzel</option>
+        <option value="desak">Desak</option>
+        <option value="diana">Diana</option>
+        <option value="eric">Eric</option>
+        <option value="evelyn">Evelyn</option>
+        <option value="felice">Felice</option>
+        <option value="gabby">Gabby</option>
+        <option value="gabytan">Gaby Tan</option>
+        <option value="hallvard">Hallvard</option>
+        <option value="hansel">Hansel</option>
+        <option value="hanxi">Hanxi</option>
+        <option value="joce">Joce</option>
+        <option value="joice">Joice</option>
+        <option value="jopris">Jopris</option>
+        <option value="kheysia">Kheysia</option>
+        <option value="kresensia">Kresensia</option>
+        <option value="kwan">Kwan</option>
+        <option value="livica">Livica</option>
+        <option value="lovina">Lovina</option>
+        <option value="megan">Megan</option>
+        <option value="michelleaw">Michelle AW</option>
+        <option value="michelleL">Michelle L</option>
+        <option value="miguel">Miguel</option>
+        <option value="monic">Monic</option>
+        <option value="nana">Nana</option>
+        <option value="neisya">Neisya</option>
+        <option value="owen">Owen</option>
+        <option value="samuel">Samuel</option>
+        <option value="sekar">Sekar</option>
+        <option value="vanessa">Vanessa</option>
+        <option value="vianca">Vianca</option>
+        <option value="viriyane">Viriyane</option>
+      </select>
+      <div class="error-msg" id="error-msg">Please select your name first.</div>
+
+      <button class="btn-submit" onclick="goToStudentPage()">Open My Message →</button>
+    </div>
+
+    <!-- AUDIO PLAYER -->
+    <div class="audio-card">
+      <div class="audio-header">
+        <div class="audio-avatar">🎙️</div>
+        <div>
+          <p class="audio-title">A Message From Ko Nathan</p>
+          <p class="audio-sub">Press play to hear my voice</p>
+        </div>
+      </div>
+
+      <!-- ✏️ Replace "voice-message.mp3" with your actual audio filename -->
+      <audio id="my-audio" src="lastmessage.m4a.mpeg" preload="metadata"></audio>
+
+      <div class="audio-controls">
+        <button class="audio-btn" id="play-btn" onclick="togglePlay()">&#9654;</button>
+        <div class="audio-progress-wrap" onclick="seekAudio(event)">
+          <div class="audio-progress-bar" id="progress-bar"></div>
+        </div>
+        <span class="audio-time" id="audio-time">0:00</span>
+      </div>
+    </div>
+
+    <!-- DRIVE LINK -->
+    <a class="drive-link" href="https://drive.google.com/drive/folders/19-7Q241AykzfbBpzGy3lcswZ2LcNCyId?usp=drive_link" target="_blank" rel="noopener">
+     📸 Unlock Your Memories Here
+    </a>
+    
+    <!-- INSTAGRAM -->
+    <a class="instagram-link" href="https://instagram.com/nathanjoshuah" target="_blank" rel="noopener">
+      <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+      </svg>
+      <span>@nathanjoshuah</span>
+    </a>
+
+  </div><!-- end #home-page -->
+
+  <!-- ── STUDENT PAGE ── -->
+  <div id="student-page">
+
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-icon">✦</div>
+        <span class="logo-text">Ko Nathan's Last Advice</span>
+      </div>
+    </header>
+
+    <div class="student-card">
+      <div class="avatar" id="student-avatar">?</div>
+      <div class="congrats-label">Congratulations</div>
+      <h2 id="student-name">Student Name</h2>
+
+      <div class="message-box" id="student-message">
+        Loading message...
+      </div>
+
+      <div class="teacher-sign-row">
+        <img src="myphoto.jpeg" alt="Ko Nathan" class="teacher-thumb" id="teacher-thumb"
+             onerror="this.style.display='none'; document.getElementById('teacher-thumb-fallback').style.display='flex';" />
+        <div class="teacher-thumb-fallback" id="teacher-thumb-fallback">📷</div>
+        <p class="teacher-sign">With love &amp; pride,<br><strong id="teacher-name">Ko Nathan</strong></p>
+      </div>
+
+      <button class="btn-back" onclick="goBack()">← Back</button>
+    </div>
+
+    <a class="instagram-link" href="https://instagram.com/nathanjoshuah" target="_blank" rel="noopener">
+      <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+      </svg>
+      <span>@nathanjoshuah</span>
+    </a>
+
+  </div><!-- end #student-page -->
+
+  <script src="script.js"></script>
+</body>
+</html>
