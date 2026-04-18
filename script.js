@@ -229,9 +229,11 @@ function togglePlay() {
   if (audio.paused) {
     audio.play();
     playBtn.innerHTML = '&#9646;&#9646;';
+    bgMusic.volume = 0.1; // lower bg music while voice plays
   } else {
     audio.pause();
     playBtn.innerHTML = '&#9654;';
+    bgMusic.volume = 0.8; // restore bg music
   }
 }
 
@@ -253,6 +255,7 @@ audio.addEventListener('ended', () => {
   playBtn.innerHTML = '&#9654;';
   progressBar.style.width = '0%';
   audioTime.textContent = '0:00';
+  bgMusic.volume = 0.8; // restore bg music when voice message finishes
 });
 
 function seekAudio(e) {
@@ -413,14 +416,14 @@ for (let i = 0; i < 18; i++) {
 
 // ── BACKGROUND MUSIC ──
 const bgMusic = document.getElementById('bg-music');
-bgMusic.volume = 0.08;
+bgMusic.volume = 0.8;
 
 document.addEventListener('click', () => {
   if (bgMusic.paused) bgMusic.play();
 }, { once: true });
 
 // ── VOICE PLAYER VOLUME ──
-audio.volume = 0.85;
+audio.volume = 1;
 
 // Fade in home page on first load
 document.getElementById('home-page').classList.add('page-fade-in');
